@@ -3,21 +3,20 @@ import Server from "./clases/server";
 import { SERVER_PORT } from "./global/environment";
 import  router  from "./routes/router";
 import  bodyParser  from "body-parser";
-import cors from "cors";
 
-const server = new Server();
+
+const server = Server.instance;
 
 
 // BodyParser
 server.app.use(bodyParser.urlencoded({ extended: true}));
 server.app.use(bodyParser.json());
 
-//CORS
+//CORS -- esta línea de código no funiona
 // server.app.use(cors( { origin: true, credentials: true }));
 
 // Rutas de servicos. 
 server.app.use('/', router);
-
 
 
 server.start( () => {
